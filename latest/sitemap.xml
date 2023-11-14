@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://autogen-agents.airt.ai/0.0/SUMMARY/</loc>
+        <lastmod>2023-11-14</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/SUMMARY/"/>
+    </url>
+    <url>
+        <loc>https://autogen-agents.airt.ai/0.0/</loc>
+        <lastmod>2023-11-14</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/"/>
+    </url>
+    <url>
+        <loc>https://autogen-agents.airt.ai/0.0/release/</loc>
+        <lastmod>2023-11-14</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/release/"/>
+    </url>
+</urlset>
