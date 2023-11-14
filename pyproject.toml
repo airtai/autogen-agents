@@ -86,6 +86,7 @@ test-core = [
 ]
 
 testing = [
+    "autogen-agents[test-core]",
     "PyYAML",
 #    "pytest-recording",
 ]
