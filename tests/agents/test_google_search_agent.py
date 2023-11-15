@@ -45,7 +45,7 @@ class TestGoogleSearchAgent:
         search_web_function = actual["search_web"]
         assert callable(search_web_function)
 
-    @pytest.mark.vcr(filter_query_parameters=["key", "cx"])
+    @pytest.mark.vcr(filter_query_parameters=["key", "cx"]) # type: ignore
     def test_search(self) -> None:
         actual = GoogleSearchAgent.get_function_map(api_key="api_key", cse_id="cse_id")
 
