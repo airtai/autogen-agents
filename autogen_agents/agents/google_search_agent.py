@@ -71,7 +71,8 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
             res = service.cse().list(q=query, cx=cse_id).execute()
 
             # Return the results
-            return res.get('items', [])
+            items: List[Dict[str, Any]] = res.get('items', [])
+            return items
 
         function_map = {"search_web": search_web}
         return function_map
