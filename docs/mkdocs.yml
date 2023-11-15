@@ -98,7 +98,7 @@ plugins:
             show_symbol_type_heading: true
             show_symbol_type_toc: true
             load_external_modules: true
-            preload_modules: [httpx, starlette, fastapi]
+            # preload_modules: [httpx, starlette, fastapi]
   - i18n:
       docs_structure: folder
       reconfigure_material: true

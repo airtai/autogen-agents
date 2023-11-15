@@ -175,7 +175,6 @@ concurrency = [
 ]
 source = [
     "autogen_agents",
-    "tests"
 ]
 context = '${CONTEXT}'
 omit = [
