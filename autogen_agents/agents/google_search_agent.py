@@ -54,7 +54,9 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
             The function_map for the agent.
         """
 
-        def search_web(query: str, *, api_key: str = api_key, cse_id: str = cse_id) -> List[Dict[str, Any]]:
+        def search_web(
+            query: str, *, api_key: str = api_key, cse_id: str = cse_id
+        ) -> List[Dict[str, Any]]:
             """Search the web for the user and provide the search report.
 
             Args:
@@ -71,7 +73,7 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
             res = service.cse().list(q=query, cx=cse_id).execute()
 
             # Return the results
-            items: List[Dict[str, Any]] = res.get('items', [])
+            items: List[Dict[str, Any]] = res.get("items", [])
             return items
 
         function_map = {"search_web": search_web}
