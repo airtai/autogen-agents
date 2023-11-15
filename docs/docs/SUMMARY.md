@@ -3,6 +3,4 @@
     - autogen_agents
         - agents
             - [GoogleSearchAgent](api/autogen_agents/agents/GoogleSearchAgent.md)
-            - google_search_agent
-                - [GoogleSearchAgent](api/autogen_agents/agents/google_search_agent/GoogleSearchAgent.md)
 - [Release Notes](release.md)

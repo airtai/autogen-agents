@@ -43,19 +43,22 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
         return functions
 
     @staticmethod
-    def get_function_map(api_key: str, cse_id: str) -> Dict[str, Any]:
+    def get_function_map(google_api_key: str, google_cse_id: str) -> Dict[str, Any]:
         """Get the function_map for the agent.
 
         Args:
-            api_key: The api_key for the agent.
-            cse_id: Google Custom Search Engine ID
+            google_api_key: The api_key for the agent.
+            google_cse_id: Google Custom Search Engine ID
 
         Returns:
             The function_map for the agent.
         """
 
         def search_web(
-            query: str, *, api_key: str = api_key, cse_id: str = cse_id
+            query: str,
+            *,
+            api_key: str = google_api_key,
+            google_cse_id: str = google_cse_id,
         ) -> List[Dict[str, Any]]:
             """Search the web for the user and provide the search report.
 
@@ -70,7 +73,7 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
             service = build("customsearch", "v1", developerKey=api_key)
 
             # Perform the search
-            res = service.cse().list(q=query, cx=cse_id).execute()
+            res = service.cse().list(q=query, cx=google_cse_id).execute()
 
             # Return the results
             items: List[Dict[str, Any]] = res.get("items", [])
@@ -105,8 +108,8 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
         self,
         name: str,
         *,
-        api_key: str,
-        cse_id: str,
+        google_api_key: str,
+        google_cse_id: str,
         system_message: Optional[str] = DEFAULT_SYSTEM_MESSAGE,
         is_termination_msg: Optional[Callable[[Dict[str, Any]], bool]] = None,
         max_consecutive_auto_reply: Optional[int] = None,
@@ -117,9 +120,26 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
         timeout: Optional[int] = None,
         default_auto_reply: Optional[Union[str, Dict[str, Any], None]] = "",
     ) -> None:
+        """
+        Initialize the GoogleSearchAgent.
+
+        Args:
+            name (str): The name of the agent.
+            google_api_key (str): The API key to use for Google Search.
+            google_cse_id (str): The Custom Search Engine ID to use for Google Search.
+            system_message (Optional[str]): The default system message. Defaults to DEFAULT_SYSTEM_MESSAGE.
+            is_termination_msg (Optional[Callable[[Dict[str, Any]], bool]]): A function to determine if a message should terminate the agent. Defaults to None.
+            max_consecutive_auto_reply (Optional[int]): The maximum number of consecutive auto replies. Defaults to None.
+            human_input_mode (Optional[str]): The mode for human input. Defaults to "NEVER".
+            code_execution_config (Optional[Union[Dict[str, Any], bool]]): The configuration for code execution. Defaults to False.
+            config_list (List[Dict[str, Any]]): The list of configurations for the agent.
+            timeout (Optional[int]): The timeout for the agent. Defaults to None.
+            default_auto_reply (Optional[Union[str, Dict[str, Any], None]]): The default auto reply for the agent. Defaults to "".
+        """
         llm_config = GoogleSearchAgent.get_llm_config(config_list, timeout)
-        function_map = GoogleSearchAgent.get_function_map(api_key, cse_id)
-        self.api_key = api_key
+        function_map = GoogleSearchAgent.get_function_map(google_api_key, google_cse_id)
+        self.api_key = google_api_key
+        self.google_cse_id = google_cse_id
 
         super().__init__(
             name=name,
