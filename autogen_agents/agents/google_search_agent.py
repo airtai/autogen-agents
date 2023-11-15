@@ -1,6 +1,7 @@
 from typing import Any, Callable, Dict, List, Optional, Union
 
 from autogen import ConversableAgent
+from googleapiclient.discovery import build
 
 
 class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
@@ -42,17 +43,18 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
         return functions
 
     @staticmethod
-    def get_function_map(api_key: str) -> Dict[str, Any]:
+    def get_function_map(api_key: str, cse_id: str) -> Dict[str, Any]:
         """Get the function_map for the agent.
 
         Args:
             api_key: The api_key for the agent.
+            cse_id: Google Custom Search Engine ID
 
         Returns:
             The function_map for the agent.
         """
 
-        def search_web(query: str, *, api_key: str = api_key) -> str:
+        def search_web(query: str, *, api_key: str = api_key, cse_id: str = cse_id) -> List[Dict[str, Any]]:
             """Search the web for the user and provide the search report.
 
             Args:
@@ -62,7 +64,14 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
                 The search report.
             """
 
-            raise NotImplementedError
+            # Build a service object for the API
+            service = build("customsearch", "v1", developerKey=api_key)
+
+            # Perform the search
+            res = service.cse().list(q=query, cx=cse_id).execute()
+
+            # Return the results
+            return res.get('items', [])
 
         function_map = {"search_web": search_web}
         return function_map
@@ -94,6 +103,7 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
         name: str,
         *,
         api_key: str,
+        cse_id: str,
         system_message: Optional[str] = DEFAULT_SYSTEM_MESSAGE,
         is_termination_msg: Optional[Callable[[Dict[str, Any]], bool]] = None,
         max_consecutive_auto_reply: Optional[int] = None,
@@ -105,7 +115,7 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
         default_auto_reply: Optional[Union[str, Dict[str, Any], None]] = "",
     ) -> None:
         llm_config = GoogleSearchAgent.get_llm_config(config_list, timeout)
-        function_map = GoogleSearchAgent.get_function_map(api_key)
+        function_map = GoogleSearchAgent.get_function_map(api_key, cse_id)
         self.api_key = api_key
 
         super().__init__(

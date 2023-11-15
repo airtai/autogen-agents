@@ -41,6 +41,7 @@ dynamic = ["version"]
 
 dependencies = [
     "pyautogen==0.2.0b5",
+    "google-api-python-client>=2.70.0,<3"
 ]
 
 [project.optional-dependencies]
@@ -88,7 +89,7 @@ test-core = [
 testing = [
     "autogen-agents[test-core]",
     "PyYAML",
-#    "pytest-recording",
+    "pytest-recording",
 ]
 
 publish = ["hatch==1.7.0"]

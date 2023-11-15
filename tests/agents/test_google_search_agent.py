@@ -40,14 +40,14 @@ class TestGoogleSearchAgent:
         assert actual == expected, actual
 
     def test_get_function_map(self) -> None:
-        actual = GoogleSearchAgent.get_function_map("api_key")
+        actual = GoogleSearchAgent.get_function_map("api_key", "cse_id")
 
         search_web_function = actual["search_web"]
         assert callable(search_web_function)
 
-    @pytest.mark.skip(reason="Not implemented yet")
+    @pytest.mark.vcr(filter_query_parameters=["key", "cx"])
     def test_search(self) -> None:
-        actual = GoogleSearchAgent.get_function_map("api_key")
+        actual = GoogleSearchAgent.get_function_map(api_key="api_key", cse_id="cse_id")
 
         search_web_function = actual["search_web"]
 
@@ -102,6 +102,7 @@ class TestGoogleSearchAgent:
         search_agent = GoogleSearchAgent(
             "search_agent",
             api_key="api_key",  # pragma: allowlist secret
+            cse_id="cse_id",
             config_list=config_list,
             timeout=120,
         )
