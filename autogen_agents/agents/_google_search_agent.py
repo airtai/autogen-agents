@@ -138,7 +138,7 @@ class GoogleSearchAgent(ConversableAgent):  # type: ignore[misc]
         """
         llm_config = GoogleSearchAgent.get_llm_config(config_list, timeout)
         function_map = GoogleSearchAgent.get_function_map(google_api_key, google_cse_id)
-        self.api_key = google_api_key
+        self.google_api_key = google_api_key
         self.google_cse_id = google_cse_id
 
         super().__init__(

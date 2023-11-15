@@ -104,8 +104,9 @@ class TestGoogleSearchAgent:
             config_list=config_list,
             timeout=120,
         )
+        assert hasattr(search_agent, "google_api_key")  # pragma: allowlist secret
         assert (
-            hasattr(search_agent, "google_api_key")
-            and search_agent.google_api_key
-            == "google_api_key"  # pragma: allowlist secret
+            search_agent.google_api_key == "google_api_key"  # pragma: allowlist secret
         )
+        assert hasattr(search_agent, "google_cse_id")
+        assert search_agent.google_cse_id == "google_cse_id"
