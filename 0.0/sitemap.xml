@@ -2,20 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://autogen-agents.airt.ai/0.0/SUMMARY/</loc>
-        <lastmod>2023-11-14</lastmod>
+        <lastmod>2023-11-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/SUMMARY/"/>
     </url>
     <url>
         <loc>https://autogen-agents.airt.ai/0.0/</loc>
-        <lastmod>2023-11-14</lastmod>
+        <lastmod>2023-11-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/"/>
     </url>
     <url>
         <loc>https://autogen-agents.airt.ai/0.0/release/</loc>
-        <lastmod>2023-11-14</lastmod>
+        <lastmod>2023-11-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/release/"/>
+    </url>
+    <url>
+        <loc>https://autogen-agents.airt.ai/0.0/api/autogen_agents/</loc>
+        <lastmod>2023-11-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/api/autogen_agents/"/>
+    </url>
+    <url>
+        <loc>https://autogen-agents.airt.ai/0.0/api/autogen_agents/agents/GoogleSearchAgent/</loc>
+        <lastmod>2023-11-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/api/autogen_agents/agents/GoogleSearchAgent/"/>
+    </url>
+    <url>
+        <loc>https://autogen-agents.airt.ai/0.0/api/autogen_agents/agents/google_search_agent/GoogleSearchAgent/</loc>
+        <lastmod>2023-11-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://autogen-agents.airt.ai/0.0/api/autogen_agents/agents/google_search_agent/GoogleSearchAgent/"/>
     </url>
 </urlset>

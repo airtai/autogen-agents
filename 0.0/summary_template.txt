@@ -1,2 +1,4 @@
 - [Autogen Agents](index.md)
+- [Reference - Code API](api/autogen_agents/index.md)
+{api}
 - [Release Notes](release.md)
