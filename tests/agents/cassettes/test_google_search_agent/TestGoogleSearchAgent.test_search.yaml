@@ -16,7 +16,7 @@ interactions:
     uri: https://customsearch.googleapis.com/customsearch/v1?alt=json&q=unofficial+autogen+agents
   response:
     body:
-      string: !!binary |
+      string: !!binary |  # pragma: allowlist secret
         H4sIAAAAAAAC/+192XLjypHou7+ipifmjO0RSKwkyBMKm4t2URspqaWZCUYBKJAQQQDCQoo6PhH+
         iPty3+ZpfuG++1P8JTerAJDgTrbI7vZxd4SaWGrJysrKrTILv/wOoU89yzE+ldEnPQpCtx8Q7Ovd
         f41/Ph3QApFvw/tf4BJuwpFHaGnsebal49BynfxL4DqsKH1P+p6NQ1amG4ZeUM7nh8NhruO6HZtg
@@ -203,7 +203,7 @@ interactions:
     uri: https://customsearch.googleapis.com/customsearch/v1?alt=json&q=unofficial+autogen+agents
   response:
     body:
-      string: !!binary |
+      string: !!binary |  # pragma: allowlist secret
         H4sIAAAAAAAC/+192XLjypHou7+ipifmjO0RSKwkyBMKm4t2URspqaWZCUYBKJAQQQDCQoo6PhH+
         iPty3+ZpfuG++1P8JTerAJDgTrbI7vZxd4SaWGrJysrKrTILv/wOoU89yzE+ldEnPQpCtx8Q7Ovd
         f41/Ph3QApFvw/tf4BJuwpFHaGnsebal49BynfxL4DqsKH1P+p6NQ1amG4ZeUM7nh8NhruO6HZtg

@@ -4,15 +4,10 @@ from unittest import mock
 import pytest
 from autogen import config_list_from_json
 
-from autogen_agents.agents.google_search_agent import GoogleSearchAgent
+from autogen_agents.agents._google_search_agent import GoogleSearchAgent
 
 
 class TestGoogleSearchAgent:
-    def test_top_level_import(self) -> None:
-        from autogen_agents import GoogleSearchAgent as TopLevelGoogleSearchAgent
-
-        assert TopLevelGoogleSearchAgent == GoogleSearchAgent
-
     def test_agents_level_import(self) -> None:
         from autogen_agents.agents import (
             GoogleSearchAgent as AgentsLevelGoogleSearchAgent,
@@ -40,14 +35,17 @@ class TestGoogleSearchAgent:
         assert actual == expected, actual
 
     def test_get_function_map(self) -> None:
-        actual = GoogleSearchAgent.get_function_map("api_key", "cse_id")
+        actual = GoogleSearchAgent.get_function_map("google_api_key", "google_cse_id")
 
         search_web_function = actual["search_web"]
         assert callable(search_web_function)
 
     @pytest.mark.vcr(filter_query_parameters=["key", "cx"])  # type: ignore
     def test_search(self) -> None:
-        actual = GoogleSearchAgent.get_function_map(api_key="api_key", cse_id="cse_id")
+        actual = GoogleSearchAgent.get_function_map(
+            google_api_key="google_api_key",  # pragma: allowlist secret
+            google_cse_id="google_cse_id",
+        )
 
         search_web_function = actual["search_web"]
 
@@ -90,7 +88,7 @@ class TestGoogleSearchAgent:
         assert llm_config == expected
 
     @mock.patch.dict(
-        os.environ, {"OPENAI_API_KEY": "api_key"}  # pragma: allowlist secret
+        os.environ, {"OPENAI_API_KEY": "open_api_key"}  # pragma: allowlist secret
     )
     def test_init(self) -> None:
         config_list = config_list_from_json(
@@ -101,12 +99,14 @@ class TestGoogleSearchAgent:
         )
         search_agent = GoogleSearchAgent(
             "search_agent",
-            api_key="api_key",  # pragma: allowlist secret
-            cse_id="cse_id",
+            google_api_key="google_api_key",  # pragma: allowlist secret
+            google_cse_id="google_cse_id",
             config_list=config_list,
             timeout=120,
         )
+        assert hasattr(search_agent, "google_api_key")  # pragma: allowlist secret
         assert (
-            hasattr(search_agent, "api_key")
-            and search_agent.api_key == "api_key"  # pragma: allowlist secret
+            search_agent.google_api_key == "google_api_key"  # pragma: allowlist secret
         )
+        assert hasattr(search_agent, "google_cse_id")
+        assert search_agent.google_cse_id == "google_cse_id"
