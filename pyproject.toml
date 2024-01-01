@@ -57,7 +57,7 @@ devdocs = [
     "mkdocs-git-revision-date-localized-plugin>=1.2.0",
     "mike>=2,<3",  # versioning
     "mkdocs-macros-plugin>=1.0.0",  # includes with variables
-    "mkdocs-glightbox==0.3.4",  # img zoom
+    "mkdocs-glightbox==0.3.6",  # img zoom
     "mkdocs-minify-plugin==0.7.1",
     "pillow==10.1.0",
     "cairosvg==2.7.1",
