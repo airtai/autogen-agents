@@ -40,7 +40,7 @@ classifiers = [
 dynamic = ["version"]
 
 dependencies = [
-    "pyautogen==0.2.0b5",
+    "pyautogen==0.2.10",
     "google-api-python-client>=2.70.0,<3"
 ]
 
